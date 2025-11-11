@@ -4,4 +4,5 @@ def comb(n, k):
     if k == 1:
         return n
     else:
-        
+        return comb(n-1, k-1) + comb(n-1, k)
+    
