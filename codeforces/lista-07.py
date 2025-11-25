@@ -1,15 +1,20 @@
 # A. Tabuada
-'''N = int(input())
+N = int(input())
 
 for i in range(1, 11):
     print(f"{i} x {N} = {i * N}")
 
-# B. Somatório
 
+    # B. Somatório
 N = int(input())
 
-# C. Múltiplos I
+soma = 0.0
+for i in range(1, N + 1):
+    soma += 1 / i
+print(f"{soma:.4f}")
 
+
+# C. Múltiplos I
 a, b = map(int, input().split())
 list = []
 
@@ -18,8 +23,8 @@ for i in range(1, b + 1):
         list.append(i)
 print(*list)
 
-# D. Divisores
 
+# D. Divisores
 n = int(input())
 list = []
 
@@ -28,8 +33,8 @@ for i in range(1, n+1):
         list.append(i)
 print(*list)
 
-# E. Média I
 
+# E. Média I
 N = int(input())
 
 list = list(map(int, input().split()))
@@ -49,8 +54,8 @@ for i in list:
         media_check += 1
 print(f"{media:.1f}\n{mediaF}\n{media_check}")
 
-# F. Primo fácil
 
+# F. Primo fácil
 N = int(input())
 div = 0
 
@@ -62,8 +67,8 @@ if div == 2:
 else:
     print("Nao")
 
+    
 # G. Média II
-
 n = int(input())
 list = list(map(int, input().split()))
 soma = 0
@@ -86,58 +91,47 @@ list_mediacheck.insert(0, len(list_mediacheck))
 print(f"{media:.1f}")
 print(*list_mediaF)
 print(*list_mediacheck)
+        
 
 # H. Game show
-
 C = int(input())
 
-for i in range(1, C+1):
-    V = list(map(int, input().split()))
-    
-# J. Sequencia secreta
-
-N = int(input())
-for i in range(1, N+1):
-    V = list(map(int, input().split()))
-    
-# saída 7 - 3
-
 cont = 0
+maximo = 0
 
-for i in V:
-    if i == V[len-1]:
-        cont += 1
-print(cont)'''
-        
-        
+for i in range(C):
+    v = int(input())
+    cont += v
+    if cont > maximo:
+        maximo = cont
+
+print(100 + maximo)
+
+
 # I. Desvendando Monty Hall
-
 N = int(input())
-
-V = list(map(int, input().split()))
-    
-# a primeira porta escolhida não terá chance
-
 cont = 0
-porta = V[0]
 
-for i in V:
-    if i != porta:
+for i in range(N):
+    porta = int(input())
+    if porta != 1:
         cont += 1
-    else:
-'''
-if V[0] == 1:
-    for i in V:
-        if i == 2 or i == 3:
-            cont += 1
-elif V[0] == 2:
-    for i in V:
-        if i == 1 or i == 3:
-            cont += 1
-        
-elif V[0] == 3:
-    for i in V:
-        if i == 1 or i == 2:
-            cont += 1'''
 print(cont)
         
+
+# J. Sequencia secreta
+N = int(input())
+V = []
+
+for i in range(N):
+    V.append(int(input()))
+cont = 1
+
+for i in range(1, N):
+    if V[i] != V[i - 1]:
+        cont += 1
+print(cont)
+
+
+
+    

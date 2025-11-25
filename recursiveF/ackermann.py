@@ -8,7 +8,7 @@ def ackermann(m, n):
         return ackermann(m - 1, ackermann(m, n - 1))
 
 ackermann.chamadas = 0
-m, n = 0, 0
+m, n = 1, 4
 resultado = ackermann(m, n)
 
 print(f"({m}, {n})")
