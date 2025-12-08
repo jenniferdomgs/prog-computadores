@@ -147,19 +147,71 @@ while True:
         print(picos)
 
     except (EOFError, ValueError):
-        break'''
+        break
 
 # I. Descobrindo senha
+
+cont = 1  # contador de testes
 
 while True:
     try:
         n = int(input())
-
-        if n == 0:
-            break
-    
-    except (EOFError, ValueError):
+    except EOFError:
         break
+
+    v = list(map(float, input().split()))
+    valores = []
+
+    for i in v:
+        valores.append(float(i))
+
+    lista = [] 
+
+    # pares de oleo + digito
+    for l in range(10):
+        lista.append([valores[l], l])
+
+    # ordenando os valores dos oleos de forma decrescente
+    # se tiver empate, compara os digitos e ordena de forma crescente
+    tam = len(lista)
+    for i in range(tam):
+        for j in range(tam - 1 - i):
+            oleo1, dig1 = lista[j]
+            oleo2, dig2 = lista[j+1]
+
+            troca = False
+            if oleo2 > oleo1:
+                troca = True
+            elif oleo2 == oleo1 and dig2 < dig1:
+                troca = True
+
+            if troca:
+                lista[j], lista[j+1] = lista[j+1], lista[j]
+
+    # ordenando os n primeiros
+    senha = ""
+    for i in range(n):
+        senha += str(lista[i][1])
+
+    print(f"Caso {cont}: {senha}")
+    cont += 1'''
+
+# J. Mergulho
+
+N, R = map(int, input().split())
+id = list(map(int, input().split()))
+
+out = []
+
+if N == R:
+    print("*")
+else:
+    for i in range(1, N):
+        if i in id:
+            continue
+        else:
+            out.append(i)
+    print(*out)
 
 
 
