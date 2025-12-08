@@ -1,5 +1,5 @@
 # A. Senha de acesso
-'''
+
 senha = int(input())
 while senha != 9842:
     print("Senha Invalida!")
@@ -194,7 +194,7 @@ while True:
         senha += str(lista[i][1])
 
     print(f"Caso {cont}: {senha}")
-    cont += 1'''
+    cont += 1
 
 # J. Mergulho
 
@@ -206,7 +206,7 @@ out = []
 if N == R:
     print("*")
 else:
-    for i in range(1, N):
+    for i in range(1, N+1):
         if i in id:
             continue
         else:
