@@ -1,5 +1,5 @@
 # A. Jogo da estratégia
-J, R = map(int, input().split())
+'''J, R = map(int, input().split())
 v = list(map(int, input().split()))
 
 pontos = [0] * J # cada indice corresponde ao jogador i+1 
@@ -28,14 +28,31 @@ print(vencedor)
         
 
 # B. Holter
-'''
+
 N = int(input())
 valores = []
 for i in range(N):
-    b = list(map(int, input().split()))
+    b = int(input())
+    valores.append(b)
 
-for i in b:
+media = 0
 
-    valores.append(int(i))
-'''
+for i in valores:
+    media += i
+
+media = media // N
+
+media_out = []
+
+for i in valores:
+    if i < int(media * 0.9) or i > int(media * 1.1): # se o valor medido estiver fora da faixa de 10%, add ele a uma lista  
+        media_out.append(i)
+
+tam = len(media_out)
+print(f"{media}\n{tam}")'''
+
+# C. Lâmpadas
+
+
+
 
