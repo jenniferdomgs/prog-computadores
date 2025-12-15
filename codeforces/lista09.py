@@ -49,10 +49,43 @@ for i in valores:
         media_out.append(i)
 
 tam = len(media_out)
-print(f"{media}\n{tam}")'''
+print(f"{media}\n{tam}")
 
 # C. Lâmpadas
 
+N = int(input()) 
+inter = list(map(int, input().split()))
+
+estadoA = 0
+estadoB = 0
+
+for i in inter:
+    if i == 1:
+        if estadoA == 0:
+            estadoA = 1
+        else:
+            estadoA = 0
+    if i == 2:
+        if estadoA == 1 and estadoB == 0:
+            estadoA = 0
+            estadoB = 1
+        elif estadoA == 0 and estadoB == 1:
+            estadoA = 1   
+            estadoB = 0  
+        elif estadoA == 1 and estadoB == 1:
+            estadoA = 0
+            estadoB = 0
+        else:
+            estadoA = 1
+            estadoB = 1 
+
+print(f"{estadoA}\n{estadoB}")'''
+
+
+# D. Enigma
+
+msg = str(input())
+crib = str(input())
 
 
 
