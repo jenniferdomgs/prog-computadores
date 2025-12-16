@@ -87,5 +87,23 @@ print(f"{estadoA}\n{estadoB}")'''
 msg = str(input())
 crib = str(input())
 
+# D. Enigma
+
+msg = str(input())
+crib = str(input())
+
+msgC = len(msg)
+ 
+cribC = len(crib)
+
+cont = 0
+
+for i in range(msgC - cribC):
+    if (msgC - cribC) % 2 == 0:
+        cont = msgC // cribC
+    if (msgC - cribC) % 2 != 0:
+        cont += 1
+
+print(cont)
 
 
