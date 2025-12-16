@@ -79,13 +79,7 @@ for i in inter:
             estadoA = 1
             estadoB = 1 
 
-print(f"{estadoA}\n{estadoB}")'''
-
-
-# D. Enigma
-
-msg = str(input())
-crib = str(input())
+print(f"{estadoA}\n{estadoB}")
 
 # D. Enigma
 
@@ -98,12 +92,22 @@ cribC = len(crib)
 
 cont = 0
 
-for i in range(msgC - cribC):
-    if (msgC - cribC) % 2 == 0:
-        cont = msgC // cribC
-    if (msgC - cribC) % 2 != 0:
+for i in range((msgC - cribC) + 1):
+    flag = True
+    for k in range(cribC):
+        if msg[i+k] == crib[k]:
+            flag = False
+    if flag:
         cont += 1
 
-print(cont)
+print(cont)'''
+
+# E. Achando monótonos não triviais maximais
+
+N = int(input())
+carac = str(input())
+
+
+            
 
 
