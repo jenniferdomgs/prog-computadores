@@ -172,14 +172,4 @@ clas = C
 while clas < N and lista[clas] == lista[C - 1]:
     clas += 1
 
-print(clas) 
-
-
-
-
-
-
-
-    
-
-
+print(clas)
