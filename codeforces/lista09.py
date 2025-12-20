@@ -79,7 +79,7 @@ for i in inter:
             estadoA = 1
             estadoB = 1 
 
-print(f"{estadoA}\n{estadoB}")'''
+print(f"{estadoA}\n{estadoB}")
 
 
 # D. Enigma
@@ -87,5 +87,99 @@ print(f"{estadoA}\n{estadoB}")'''
 msg = str(input())
 crib = str(input())
 
+msgC = len(msg)
+
+cribC = len(crib)
+
+print(msgC // cribC)
+
+# E. Achando monótonos não triviais maximais
+
+n = int(input())
+s = input().strip()
+
+total_a = 0   
+tamanho_atual = 0  
+char_anterior = ''   
+
+for char in s:
+    if char == char_anterior:
+        # se o caractere é igual ao anterior, att o bloco
+        tamanho_atual += 1
+    else:
+        # se o caractere muda, verifica se o bloco anterior é gual ou maior que 2
+        if char_anterior == 'a' and tamanho_atual >= 2:
+            total_a += tamanho_atual
+        
+        # reseta e inicia contagem do novo bloco
+        char_anterior = char
+        tamanho_atual = 1
+
+if char_anterior == 'a' and tamanho_atual >= 2:
+    total_a += tamanho_atual
+
+print(total_a)
+
+# F. Maior número de um algarismo
+
+
+# G. Flores Florecem da França
+
+while True:
+    try:
+        linha = input()
+        
+        if linha == '*':
+            break
+        
+        palavras = linha.split()
+        
+        letra1 = palavras[0][0].lower() # primeiro caractere do primeiro elemente da lista (letra1 da primeira palavra)
+        
+        tautogram = True
+
+        for p in palavras:
+            if p[0].lower() != letra1:
+                tautogram = False
+                break 
+        
+        if tautogram:
+            print("Y")
+        else:
+            print("N")
+            
+    except EOFError:
+        break
+
+# H.Escadinha
+
+N = int(input())
+numeros = list(map(int, input().split()))'''
+
+# J.Fase
+
+N = int(input())
+C = int(input())
+lista = []
+
+for i in range(N):
+    inte = int(input())
+    lista.append(inte)
+
+lista.sort(reverse=True) # lista em ordem decrescente
+clas = C
+
+while clas < N and lista[clas] == lista[C - 1]:
+    clas += 1
+
+print(clas) 
+
+
+
+
+
+
+
+    
 
 
