@@ -122,6 +122,53 @@ print(total_a)
 
 # F. Maior número de um algarismo
 
+while True:
+    try:
+        entrada = input().split()
+        
+        n = int(entrada[0])
+        m = int(entrada[1])
+        
+        # para se são: 0 0
+        if n == 0 and m == 0:
+            break
+        
+        # enquanto o número tiver mais de 1 dígito (for >= 10)
+        while n >= 10:
+            soma_temp = 0
+            temp_n = n
+            
+            # soma os digitos do numero atual
+            while temp_n > 0:
+                digito = temp_n % 10  # ultimo digito
+                soma_temp = soma_temp + digito
+                temp_n = temp_n // 10 # remove o ultimo
+            
+            # att n com a nova soma
+            n = soma_temp
+
+        # repete a mesma ideia p/ m
+        while m >= 10:
+            soma_temp = 0
+            temp_m = m
+            
+            while temp_m > 0:
+                digito = temp_m % 10
+                soma_temp = soma_temp + digito
+                temp_m = temp_m // 10
+            
+            m = soma_temp
+            
+        if n > m:
+            print(1)
+        elif m > n:
+            print(2)
+        else:
+            print(0)
+            
+    except EOFError:
+        break
+        
 
 # G. Flores Florecem da França
 
@@ -151,10 +198,33 @@ while True:
     except EOFError:
         break
 
+        
 # H.Escadinha
 
 N = int(input())
-numeros = list(map(int, input().split()))'''
+linha = input().split()
+
+numeros = []
+for valor in linha:
+    numeros.append(int(valor))
+
+if N <= 2:
+    print(1)
+else:
+    cont = 1
+    
+    diferenca_anterior = numeros[1] - numeros[0]
+
+    for i in range(2, N):
+        diferenca_atual = numeros[i] - numeros[i-1]
+
+        # mudou a diferença = nova escadinha
+        if diferenca_atual != diferenca_anterior:
+            cont += 1
+            diferenca_anterior = diferenca_atual # att a diferença
+
+    print(cont)
+
 
 # J.Fase
 
@@ -173,3 +243,67 @@ while clas < N and lista[clas] == lista[C - 1]:
     clas += 1
 
 print(clas)
+
+'''
+
+# I. Macaco prego
+
+num_teste = 1
+
+while True:
+    try:
+        linha = input()
+        if not linha:
+            break
+        n = int(linha)
+        
+        if n == 0:
+            break
+        
+        # lê o primeiro retângulo 
+        # X (esquerda) Y (topo) U (direita) V (base)
+        coords = input().split()
+        inter_x = int(coords[0])
+        inter_y = int(coords[1])
+        inter_u = int(coords[2])
+        inter_v = int(coords[3])
+        
+        # se N=1, a resposta é o próprio retângulo
+        for i in range(n - 1):
+            coords = input().split()
+            x = int(coords[0])
+            y = int(coords[1])
+            u = int(coords[2])
+            v = int(coords[3])
+            
+            # novo X (esquerda): maior entre o atual e novo
+            if x > inter_x:
+                inter_x = x
+            
+            # novo Y (topo): menor entre o atual e novo
+            if y < inter_y:
+                inter_y = y
+                
+            # novo U (direita): menor entre o atual e novo
+            if u < inter_u:
+                inter_u = u
+                
+            # novo V (base): maior entre o atual e novo
+            if v > inter_v:
+                inter_v = v
+        
+        # saídas
+        print(f"Teste {num_teste}")
+        
+        # verifica se a interseção é válida (esquerda <= direita  /  base <= topo)
+        if inter_x <= inter_u and inter_v <= inter_y:
+            print(f"{inter_x} {inter_y} {inter_u} {inter_v}")
+        else:
+            print("nenhum")
+            
+        print() # linha em branco dps de cada teste
+        
+        num_teste += 1
+        
+    except EOFError:
+        break
