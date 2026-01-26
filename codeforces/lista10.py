@@ -159,7 +159,7 @@ for i in range(N):
     if cores[i] >= 9:
         cores[i] = 9
 
-print(*cores)'''
+print(*cores)
     
 
 # G. Batalha naval
@@ -197,3 +197,77 @@ if valido:
     print("Y")
 else:
     print("N")
+
+# H. Subsequencia
+
+A, B = map(int, input().split())
+
+seqA = list(map(int, input().split()))
+seqB = list(map(int, input().split()))
+indexB = 0
+
+for i in seqA:
+    if i == seqB[indexB] and B > indexB:
+        indexB += 1
+    if indexB == B:
+        break
+
+if indexB == B:
+    print("S")
+else:
+    print("N")
+
+# I. Progressões aritméticas
+
+N = int(input())
+lista = list(map(int, input().split()))
+
+if N <= 2: # se tiver até 2 elementos já é uma PA
+    print(1)
+else:
+    partes = 1
+    tam_atual = 2
+
+    while tam_atual < N:
+        # diferença atual e anterior
+        dif_atual = lista[tam_atual] - lista[tam_atual - 1]
+        # diferença anterior e anterior dele
+        dif_anterior = lista[tam_atual - 1] - lista[tam_atual - 2]
+        if dif_atual == dif_anterior: # continua
+            tam_atual += 1
+        else:
+             # quebra
+            partes += 1
+            tam_atual += 1 # pula o prócimo -> nova seq
+            tam_atual += 1
+    print(partes)'''
+
+# J. Escada perfeita
+
+N = int(input())
+lista = list(map(int, input().split()))
+
+pedras = sum(lista) # total de pedras
+
+soma_base = (N * (N - 1)) // 2
+
+resto = pedras - soma_base
+
+# se o resto for menor que 0 ou se o resto não for divisível por N 
+if resto < 0 or resto % N != 0:
+    print("-1")
+else:
+    # altura do primeiro degrau
+    altura_inicial = resto // N
+    
+    cont = 0 # contador de movimentos necessários
+    
+    # contagem dos blocos que ficam sobrando
+    for i in range(N):
+        altura_necessaria = altura_inicial + i
+        
+        # se a pilha atual é maior -> tem excesso
+        if lista[i] > altura_necessaria:
+            cont += (lista[i] - altura_necessaria)
+            
+    print(cont)
